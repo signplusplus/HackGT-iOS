@@ -14,6 +14,9 @@
 		BC743B5B19CD259700915373 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC743B5A19CD259700915373 /* Images.xcassets */; };
 		BC743B5E19CD259700915373 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC743B5C19CD259700915373 /* LaunchScreen.xib */; };
 		BC743B6A19CD259700915373 /* SignTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC743B6919CD259700915373 /* SignTests.m */; };
+		BC743B7419CD268000915373 /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC743B7319CD268000915373 /* MyoKit.framework */; };
+		BC743B7619CD26FA00915373 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC743B7519CD26FA00915373 /* CoreBluetooth.framework */; };
+		BC743B7819CD270700915373 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC743B7719CD270700915373 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		BC743B6319CD259700915373 /* SignTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC743B6819CD259700915373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC743B6919CD259700915373 /* SignTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignTests.m; sourceTree = "<group>"; };
+		BC743B7319CD268000915373 /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MyoKit.framework; path = Sign/MyoKit.framework; sourceTree = "<group>"; };
+		BC743B7519CD26FA00915373 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BC743B7719CD270700915373 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC743B7819CD270700915373 /* SystemConfiguration.framework in Frameworks */,
+				BC743B7619CD26FA00915373 /* CoreBluetooth.framework in Frameworks */,
+				BC743B7419CD268000915373 /* MyoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +75,9 @@
 				BC743B4C19CD259700915373 /* Sign */,
 				BC743B6619CD259700915373 /* SignTests */,
 				BC743B4B19CD259700915373 /* Products */,
+				BC743B7319CD268000915373 /* MyoKit.framework */,
+				BC743B7719CD270700915373 /* SystemConfiguration.framework */,
+				BC743B7519CD26FA00915373 /* CoreBluetooth.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -345,7 +357,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sign",
+				);
 				INFOPLIST_FILE = Sign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,7 +372,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sign",
+				);
 				INFOPLIST_FILE = Sign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

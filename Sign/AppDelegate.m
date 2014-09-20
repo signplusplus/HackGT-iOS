@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <MyoKit/MyoKit.h>
 
 @interface AppDelegate ()
 
@@ -17,7 +18,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [TLMHub sharedHub];
+    //[self pushMyoSettings];
+    [self attachToAnyMyo];
     return YES;
+}
+
+- (void)pushMyoSettings {
+    TLMSettingsViewController *settings = [[TLMSettingsViewController alloc] init];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:settings];
+    self.window.rootViewController = navVC;
+    
+}
+
+- (void) attachToAnyMyo {
+    [[TLMHub sharedHub] attachToAdjacent];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

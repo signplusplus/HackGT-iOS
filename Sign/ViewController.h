@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MyoKit/MyoKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextViewDelegate> {
+    UITextView *notes;
+}
 
 
 @end
