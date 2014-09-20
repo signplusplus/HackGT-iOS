@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MyoKit/MyoKit.h>
+#import "Data.h"
 
 @interface ViewController : UIViewController <UITextViewDelegate> {
     UITextView *notes;
+    UIButton *recordStopButton;
 }
 
 

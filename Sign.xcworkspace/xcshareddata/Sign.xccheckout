@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A2A13C3B-BCDC-4ADA-94E3-FBC4C47CBA77</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Sign</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F438D6578CA69F7F5DAE7D625B4FB2A5B2AD90DC</key>
+		<string>https://github.com/athieck/HackGT.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Sign.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F438D6578CA69F7F5DAE7D625B4FB2A5B2AD90DC</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/athieck/HackGT.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F438D6578CA69F7F5DAE7D625B4FB2A5B2AD90DC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F438D6578CA69F7F5DAE7D625B4FB2A5B2AD90DC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Sign</string>
+		</dict>
+	</array>
+</dict>
+</plist>
