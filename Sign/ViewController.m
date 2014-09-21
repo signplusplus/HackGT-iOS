@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "Data.h"
 
 @interface ViewController () {
     bool isRecording;
+    bool isLoading;
     CGRect viewFrame;
     CGRect typingViewFrame;
     UIView *contentView;
@@ -24,8 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
-    //[[Data defaultData] sendMessage:@"hello" toNumber:[NSNumber numberWithLong:19089677453]];
     
     CGRect callFrame;
     CGRect callShadowFrame;
@@ -44,7 +44,7 @@
         callShadowFrame = CGRectMake(14, 180, 7 * self.view.frame.size.width/9 - 8, 40);
         notesFrame = CGRectMake(15, 7, 7*self.view.frame.size.width/9 - 10, 40);
         recordStopFrame = CGRectMake(20, 65, 7 * self.view.frame.size.width/9 - 20, 36);
-        inputTextLabelFrame = CGRectMake(15, 116, 7*self.view.frame.size.width/9 - 10, 40);
+        inputTextLabelFrame = CGRectMake(15, 119, 7*self.view.frame.size.width/9 - 10, 40);
         lineFrame1 = CGRectMake(10, 53, 7 * self.view.bounds.size.width / 9, 1);
         lineFrame2 = CGRectMake(10, 168, 7 * self.view.bounds.size.width / 9, 1);
         lineFrame3 = CGRectMake(10, 111, 7 * self.view.bounds.size.width / 9, 1);
@@ -81,21 +81,6 @@
     contentView.clipsToBounds = YES;
     [self.view addSubview:contentView];
     
-    /*
-    NSArray *segmentObjects = [[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"sign"], [NSString stringWithFormat:@"talk"], nil];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentObjects];
-    segmentedControl.frame = CGRectMake(20, 10, 7 * self.view.frame.size.width/9 - 24, 30);
-    //segmentedControl.frame = CGRectMake(self.view.frame.size.width/9, 1.7 * self.view.frame.size.height/3, 7 * self.view.frame.size.width/9, 30);
-    segmentedControl.selectedSegmentIndex = 0;
-    [segmentedControl addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventValueChanged];
-    UIFont *font = [UIFont boldSystemFontOfSize:15.0f];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
-                                                           forKey:NSFontAttributeName];
-    [segmentedControl setTitleTextAttributes:attributes
-                                    forState:UIControlStateNormal];
-    [contentView addSubview:segmentedControl];
-    */
-     
     notes = [[UITextView alloc] initWithFrame:notesFrame];
     notes.delegate = self;
     notes.textColor = [UIColor lightGrayColor];
@@ -108,6 +93,10 @@
     notes.keyboardType = UIKeyboardTypePhonePad;
     [notes setTextAlignment:NSTextAlignmentCenter];
     [contentView addSubview:notes];
+    
+    activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityView.center=self.view.center;
+    [self.view addSubview:activityView];
     
     inputTextLabel = [[UILabel alloc] initWithFrame:inputTextLabelFrame];
     inputTextLabel.textColor = [UIColor grayColor];
@@ -174,6 +163,10 @@
     names2.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:names2];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendSuccess) name:@"successNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendFail) name:@"failNotification" object:nil];
+
+    
 }
 
 - (void) recordStartStop: (id) sender {
@@ -185,6 +178,15 @@
         [recordStopButton setTitle:@"begin recording" forState:UIControlStateNormal];
     }
     
+}
+
+- (void) sendSuccess {
+    inputTextLabel.text = @"Live text preview";
+}
+
+- (void) sendFail {
+    //[activityView startAnimating];
+
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView {
@@ -203,6 +205,17 @@
 
 - (void) call:(id) sender {
     
+    if ([inputTextLabel.text isEqualToString:@"Live text preview"] || [notes.text isEqualToString:@"Call this number..."] || notes.text.length != 11) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid text field" message:@"One or more of your text fields are invalid." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alertView show];
+        
+    } else {
+        NSString *string = @"+";
+        NSString *string2 = [NSString stringWithFormat:@"%@%@", string, notes.text];
+        [[Data defaultData] sendMessage:@"Hello?" toNumber:string2];
+    }
+      
+
 }
 /*
 - (void) segmentedControlChange: (UISegmentedControl *) segmentedControl {

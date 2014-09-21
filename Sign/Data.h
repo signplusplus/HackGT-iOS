@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Data : NSObject
+
+@interface Data : NSObject <NSURLConnectionDelegate>
 
 + (Data *)defaultData;
 
-- (void) sendMessage: (NSString *)string toNumber: (NSNumber *)number;
+- (void) sendMessage: (NSString *)string toNumber: (NSString *)string2;
 
 @end
